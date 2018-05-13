@@ -21,5 +21,6 @@ npm test
 ### Add your own remote
 ```
 git remote rename origin starter
+git remote rm origin
 git remote add origin <your-remote>
 ```
