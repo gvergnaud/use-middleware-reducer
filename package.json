@@ -1,6 +1,6 @@
 {
   "name": "use-middleware-reducer",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "An efficient react hook to benefit from the huge middleware ecosystem of redux",
   "main": "lib/index.js",
   "scripts": {

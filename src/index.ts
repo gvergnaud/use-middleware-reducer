@@ -1,10 +1,12 @@
 import * as React from 'react'
 
-type Dispatch = (action: any) => any
+export type Dispatch = (action: any) => any
 
-type MiddlewareAPI<A> = { getState: () => A; dispatch: Dispatch }
+export type MiddlewareAPI<A> = { getState: () => A; dispatch: Dispatch }
 
-type Middleware<A> = (api: MiddlewareAPI<A>) => (next: Dispatch) => Dispatch
+export type Middleware<A> = (
+  api: MiddlewareAPI<A>
+) => (next: Dispatch) => Dispatch
 
 export const useMiddlewareReducer = <A, B>(
   reducer: (state: A | undefined, action: B) => A,
