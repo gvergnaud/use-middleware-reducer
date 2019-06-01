@@ -1,4 +1,4 @@
-# usMiddlewareReducer
+# useMiddlewareReducer
 
 An efficient react hook to benefit from the huge middleware ecosystem of redux
 
