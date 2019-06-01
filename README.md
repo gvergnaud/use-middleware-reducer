@@ -2,6 +2,19 @@
 
 An efficient react hook to benefit from the huge middleware ecosystem of redux
 
+## Installation
+
+```
+npm install use-middleware-reducer
+```
+
+or
+
+```
+yarn add use-middleware-reducer
+```
+
+
 ## How to use
 
 ```tsx
