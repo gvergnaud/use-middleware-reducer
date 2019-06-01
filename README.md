@@ -1,6 +1,8 @@
 # useMiddlewareReducer
 
-An efficient react hook to benefit from the huge middleware ecosystem of redux
+An efficient react hook to benefit from the huge middleware ecosystem of [Redux](https://github.com/reduxjs/redux).
+
+With this hook, you can use any redux middleware inside one of your React component, without using redux itself!
 
 ## Installation
 
