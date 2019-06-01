@@ -1,29 +1,23 @@
-import babel from 'rollup-plugin-babel'
 import nodeResolve from 'rollup-plugin-node-resolve'
-import commonjs from 'rollup-plugin-commonjs'
-import uglify from 'rollup-plugin-uglify'
+import typescript from 'rollup-plugin-typescript2'
 
-const createConfig = (input, output, additionnalPlugins = []) => ({
-  input,
-  output: {
-    file: output,
-    format: 'cjs'
-  },
+export default {
+  input: 'src/index.ts',
+  output: [
+    {
+      file: 'lib/index.js',
+      format: 'cjs'
+    },
+    {
+      file: 'lib/index.es.js',
+      format: 'es'
+    }
+  ],
+  external: ['react'],
   plugins: [
     nodeResolve({
       jsnext: true
     }),
-    commonjs({
-      include: 'node_modules/**'
-    }),
-    babel({
-      exclude: 'node_modules/**'
-    }),
-    ...additionnalPlugins
+    typescript()
   ]
-})
-
-export default [
-  createConfig('src/index.js', 'lib/index.js'),
-  createConfig('src/index.js', 'lib/index.min.js', [uglify()])
-]
+}
