@@ -37,3 +37,5 @@ export const useMiddlewareReducer = <A, B>(
 
   return [state, dispatch]
 }
+
+export default useMiddlewareReducer
