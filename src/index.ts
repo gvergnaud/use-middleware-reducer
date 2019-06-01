@@ -29,12 +29,10 @@ export const useMiddlewareReducer = <A, B>(
       dispatch: action => dispatch(action)
     }
 
-    const localDispatch = action =>
-      setState(state => {
-        const newState = reducer(state, action)
-        stateRef.current = newState
-        return newState
-      })
+    const localDispatch = action => {
+      stateRef.current = reducer(stateRef.current, action)
+      setState(stateRef.current)
+    }
 
     dispatch = middlewares
       .map(middleware => middleware(middlewareAPI))
