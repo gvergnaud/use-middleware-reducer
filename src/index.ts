@@ -1,23 +1,30 @@
 import * as React from 'react'
 
+type Dispatch = (action: any) => any
+
+type MiddlewareAPI<A> = { getState: () => A; dispatch: Dispatch }
+
+type Middleware<A> = (api: MiddlewareAPI<A>) => (next: Dispatch) => Dispatch
+
 export const useMiddlewareReducer = <A, B>(
   reducer: (state: A | undefined, action: B) => A,
   initialState: A,
-  middlewares: any[] = []
-): [A, (action: any) => void] => {
+  middlewares: Middleware<A>[] = []
+): [A, Dispatch] => {
   const [state, setState] = React.useState(initialState)
   const stateRef = React.useRef(state)
 
   const dispatch = React.useMemo(() => {
-    let dispatch: ((...args: any[]) => void) = (...args: any[]) => {
+    let dispatch: Dispatch = () => {
       throw new Error(
         `Dispatching while constructing your middleware is not allowed. ` +
           `Other middleware would not be applied to this dispatch.`
       )
     }
+
     const middlewareAPI = {
       getState: () => stateRef.current,
-      dispatch: (...args) => dispatch(...args)
+      dispatch: action => dispatch(action)
     }
 
     const localDispatch = action =>
