@@ -33,3 +33,8 @@ export function Counter() {
   )
 }
 ```
+
+
+## See it in action
+
+Code Sandbox demo: https://codesandbox.io/s/usemiddlewarereducer-example-otz3j
