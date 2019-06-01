@@ -1,25 +1,35 @@
-# npm package starter
+# usMiddlewareReducer
 
-A boilerplate to help you get started creating a npm package.
-
-## includes
-
-* Rollup
-* Babel
-* Prettier
-* Jest
+An efficient react hook to benefit from the huge middleware ecosystem of redux
 
 ## How to use
 
-```
-git clone git@github.com:gvergnaud/npm-package-starter.git my-package
-cd my-package
-npm i
-npm test
-```
+```tsx
 
-### Add your own remote
-```
-git remote rename origin starter
-git remote add origin <your-remote>
+import useMiddlewareReducer from 'use-middleware-reducer'
+import logger from 'redux-logger'
+
+
+const initialState = 0
+
+const reducer = (state, action) => {
+  if (action.type === 'INC') return state + 1
+  if (action.type === 'DEC') return state - 1
+}
+
+const middleware = [
+  logger
+]
+
+export function Counter() {
+  const [state, dispatch] = useMiddlewareReducer(reducer, initialState, middleware)
+
+  return (
+    <>
+      <p>{state}</p>
+      <button onClick={() => dispatch({ type: 'INC' })}>+</button>
+      <button onClick={() => dispatch({ type: 'DEC' })}>-</button>
+    </>
+  )
+}
 ```
