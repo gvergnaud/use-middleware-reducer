@@ -11,6 +11,10 @@
   },
   "author": "Gabriel Vergnaud <github.com/gvergnaud>",
   "license": "ISC",
+  "repository": {
+    "url": "https://github.com/gvergnaud/use-middleware-reducer.git",
+    "type": "git"
+  },
   "devDependencies": {
     "@types/react": "^16.8.5",
     "eslint": "^4.18.2",
