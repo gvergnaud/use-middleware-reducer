@@ -9,7 +9,7 @@ export type Middleware<A> = (
 ) => (next: Dispatch) => Dispatch
 
 export const useMiddlewareReducer = <A, B>(
-  reducer: (state: A | undefined, action: B) => A,
+  reducer: (state: A, action: B) => A,
   initialState: A,
   middlewares: Middleware<A>[] = []
 ): [A, Dispatch] => {
